@@ -1,6 +1,6 @@
 This fork is mainly for HONDA Bosch cars
 based on Zorrobytes curvatureFactorLearner 0.6.5
-plus:
+,plus:
 + press gas without disangagement
 + no alert sound for "Turn Exceeds Steering Limit"
 + camera offset 0.02
