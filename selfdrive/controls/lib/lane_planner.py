@@ -42,7 +42,7 @@ class LanePlanner():
     self.p_poly = [0., 0., 0., 0.]
     self.d_poly = [0., 0., 0., 0.]
 
-    self.lane_width = 3.0
+    self.lane_width = 2.85
     self.readings = []
     self.frame = 0
 
@@ -74,7 +74,7 @@ class LanePlanner():
         self.frame += 1
         if self.frame % 20 == 0:
             self.frame = 0
-            current_lane_width = sorted((2.8, abs(self.l_poly[3] - self.r_poly[3]), 3.6))[1]
+            current_lane_width = sorted((2.5, abs(self.l_poly[3] - self.r_poly[3]), 3.5))[1]
             max_samples = 30
             self.readings.append(current_lane_width)
             self.lane_width = mean(self.readings)
