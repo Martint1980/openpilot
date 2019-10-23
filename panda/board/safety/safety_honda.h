@@ -148,7 +148,7 @@ static int honda_tx_hook(CAN_FIFOMailBox_TypeDef *to_send) {
   if (addr == 0x200) {
     if (!current_controls_allowed || !long_controls_allowed) {
       if (GET_BYTE(to_send, 0) || GET_BYTE(to_send, 1)) {
-        tx = 0;
+        tx = 1;
       }
     }
   }
