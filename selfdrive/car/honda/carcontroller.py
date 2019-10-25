@@ -99,7 +99,7 @@ class CarController():
     self.brake_last = rate_limit(brake, self.brake_last, -2., 1./100)
 
     # vehicle hud display, wait for one update from 10Hz 0x304 msg
-    if hud_show_lanes:
+    if hud_show_lanes and CS.lkMode and not CS.left_blinker_on and not CS.right_blinker_on:
       hud_lanes = 1
     else:
       hud_lanes = 0
@@ -115,7 +115,7 @@ class CarController():
     fcw_display, steer_required, acc_alert = process_hud_alert(hud_alert)
 
     hud = HUDData(int(pcm_accel), int(round(hud_v_cruise)), 1, hud_car,
-                  0xc1, hud_lanes, fcw_display, acc_alert, steer_required)
+                  0xc1, hud_lanes, fcw_display, acc_alert, steer_required, CS.read_distance_lines, CS.lkMode)
 
     # **** process the car messages ****
 
@@ -135,7 +135,7 @@ class CarController():
     apply_brake = int(clip(self.brake_last * BRAKE_MAX, 0, BRAKE_MAX - 1))
     apply_steer = int(clip(-actuators.steer * STEER_MAX, -STEER_MAX, STEER_MAX))
 
-    lkas_active = enabled and not CS.steer_not_allowed
+    lkas_active = enabled and not CS.steer_not_allowed and CS.lkMode and not CS.left_blinker_on and not CS.right_blinker_on # add LKAS button to toggle steering
 
     # Send CAN commands.
     can_sends = []
