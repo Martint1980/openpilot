@@ -7,5 +7,7 @@ based on Zorrobytes curvatureFactorLearner 0.6.5
 
 It contains a learner to learn your curvature factor. This means no more hugging curves, and has some ability to autotune controls.
 
-Video here
-https://www.youtube.com/watch?v=Jupwoqf3w9I&feature=youtu.be
+Panda update required!
+1. Send:  cd /data/openpilot/panda/board && pkill -f boardd
+2. Send: cd /data/openpilot/panda/board && make
+3. reboot
