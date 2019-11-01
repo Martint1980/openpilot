@@ -70,7 +70,7 @@ static void honda_rx_hook(CAN_FIFOMailBox_TypeDef *to_push) {
     if ((gas_interceptor > HONDA_GAS_INTERCEPTOR_THRESHOLD) &&
         (gas_interceptor_prev <= HONDA_GAS_INTERCEPTOR_THRESHOLD) &&
         long_controls_allowed) {
-      controls_allowed = 1;
+      controls_allowed = 0;
     }
     gas_interceptor_prev = gas_interceptor;
   }
@@ -81,11 +81,15 @@ static void honda_rx_hook(CAN_FIFOMailBox_TypeDef *to_push) {
       int gas = GET_BYTE(to_push, 0);
 <<<<<<< HEAD
       if (gas && !(honda_gas_prev) && long_controls_allowed) {
+<<<<<<< HEAD
         controls_allowed = 1;
 =======
       if (gas && !(honda_gas_prev) && long_controls_allowed && !(bosch_ACC_allowed)) {
         controls_allowed = 0;
 >>>>>>> origin/patch-1
+=======
+        controls_allowed = 0;
+>>>>>>> e3858ec3d19232718f104ed72881a99c364c5964
       }
       honda_gas_prev = gas;
     }
