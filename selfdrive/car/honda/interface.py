@@ -164,7 +164,7 @@ class CarInterface(CarInterfaceBase):
     # For modeling details, see p.198-200 in "The Science of Vehicle Dynamics (2014), M. Guiggiani"
 
     ret.lateralTuning.pid.kiBP, ret.lateralTuning.pid.kpBP = [[0.], [0.]]
-    ret.lateralTuning.pid.kf = 0.00006 # conservative feed-forward
+    ret.lateralTuning.pid.kf = 0.00002 # conservative feed-forward
 
     if candidate in [CAR.CIVIC, CAR.CIVIC_BOSCH]:
       stop_and_go = True
@@ -227,7 +227,7 @@ class CarInterface(CarInterfaceBase):
       ret.mass = 3410. * CV.LB_TO_KG + STD_CARGO_KG
       ret.wheelbase = 2.66
       ret.centerToFront = ret.wheelbase * 0.41
-      ret.steerRatio = 16.0   # 12.3 is spec end-to-end
+      ret.steerRatio = 17.0   # 12.3 is spec end-to-end
       tire_stiffness_factor = 0.677
       ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.6], [0.18]]
       ret.longitudinalTuning.kpBP = [0., 5., 35.]
@@ -238,12 +238,12 @@ class CarInterface(CarInterfaceBase):
     elif candidate == CAR.CRV_HYBRID:
       stop_and_go = True
       ret.safetyParam = 1 # Accord and CRV 5G use an alternate user brake msg
-      ret.mass = 1667. + STD_CARGO_KG # mean of 4 models in kg
+      ret.mass = 1667. + STD_CARGO_KG # mean of 4 models in kg / change the value like CRV 5G?
       ret.wheelbase = 2.66
       ret.centerToFront = ret.wheelbase * 0.41
-      ret.steerRatio = 16.0   # 12.3 is spec end-to-end
+      ret.steerRatio = 17.0   # 12.3 is spec end-to-end
       tire_stiffness_factor = 0.677
-      ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.6], [0.18]]
+      ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.6], [0.18]] #maybe change later
       ret.longitudinalTuning.kpBP = [0., 5., 35.]
       ret.longitudinalTuning.kpV = [1.2, 0.8, 0.5]
       ret.longitudinalTuning.kiBP = [0., 35.]
