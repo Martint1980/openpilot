@@ -1,7 +1,7 @@
 from common.numpy_fast import interp
 import numpy as np
 
-CAMERA_OFFSET = 0.00  # m from center car to camera
+CAMERA_OFFSET = 0.02  # m from center car to camera
 
 def mean(numbers):
     return float(sum(numbers)) / max(len(numbers), 1)
@@ -42,7 +42,7 @@ class LanePlanner():
     self.p_poly = [0., 0., 0., 0.]
     self.d_poly = [0., 0., 0., 0.]
 
-    self.lane_width = 3.0
+    self.lane_width = 2.8
     self.readings = []
     self.frame = 0
 
