@@ -663,6 +663,7 @@ FW_VERSIONS = {
     ],
     (Ecu.eps, 0x18da30f1, None): [
       b'39990-TPA-G030\x00\x00',
+      b'39990-TPA,G030\X00\X00',
       b'39990-TPG-A020\x00\x00',
       b'39990-TMA-H020\x00\x00',
     ],
