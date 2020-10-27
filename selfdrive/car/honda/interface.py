@@ -275,9 +275,9 @@ class CarInterface(CarInterfaceBase):
       ret.centerToFront = ret.wheelbase * 0.41
       ret.steerRatio = 16.0  # 12.3 is spec end-to-end
       if eps_modified:
-        ret.lateralParams.torqueBP, ret.lateralParams.torqueV = [[0x0, 0xb5, 0x161, 0x2d6, 0x4c0, 0xb83, 0x1885, 0x2587, 0x2C08], [0x0, 0xF0, 0x284, 0x498, 0x748, 0xA00, 0xC00, 0xE00, 0xF00]]									 
-        ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.15], [0.045]]
-        ret.lateralTuning.pid.kf = 0.00003
+        ret.lateralParams.torqueBP, ret.lateralParams.torqueV = [[0x0, 0xB5, 0x161, 0x2D6, 0x4C0, 0x70D, 0xC42, 0x1058, 0x2C00], [0x0, 0x160, 0x1F0, 0x2E0, 0x378, 0x4A0, 0x5F0, 0x804, 0xF00]]																		 
+        ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.3], [0.1]] #still needs to finish tuning for the new car
+        ret.lateralTuning.pid.kf = 0.00006
       else:
         ret.lateralParams.torqueBP, ret.lateralParams.torqueV = [[0, 3840], [0, 3840]]
         ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.64], [0.192]]
