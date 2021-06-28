@@ -67,7 +67,7 @@ DMonitoringResult dmonitoring_eval_frame(DMonitoringModelState* s, void* stream_
     }
 
   } else {
-    crop_rect = {50, 0, height / 2, height};
+    crop_rect = {-50, 0, height / 2, height};
     if (!s->is_rhd) {
       crop_rect.x += width - crop_rect.w;
     }
