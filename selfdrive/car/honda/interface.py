@@ -153,7 +153,7 @@ class CarInterface(CarInterfaceBase):
     # For modeling details, see p.198-200 in "The Science of Vehicle Dynamics (2014), M. Guiggiani"
     ret.lateralParams.torqueBP, ret.lateralParams.torqueV = [[0], [0]]
     ret.lateralTuning.pid.kiBP, ret.lateralTuning.pid.kpBP = [[0.], [0.]]
-    ret.lateralTuning.pid.kf = 0.00006  # conservative feed-forward
+    ret.lateralTuning.pid.kf = 0.000035  # conservative feed-forward
 
     eps_modified = False
     for fw in car_fw:
@@ -268,13 +268,13 @@ class CarInterface(CarInterfaceBase):
 
     elif candidate == CAR.CRV_HYBRID:
       stop_and_go = True
-      ret.mass = 1667. + STD_CARGO_KG  # mean of 4 models in kg
+      ret.mass = 1750. + STD_CARGO_KG  # mean of 4 models in kg
       ret.wheelbase = 2.66
       ret.centerToFront = ret.wheelbase * 0.41
-      ret.steerRatio = 16.0  # 12.3 is spec end-to-end
-      ret.lateralParams.torqueBP, ret.lateralParams.torqueV = [[0, 4096], [0, 4096]]  # TODO: determine if there is a dead zone at the top end
+      ret.steerRatio = 14.9  # 12.3 is spec end-to-end
+      ret.lateralParams.torqueBP, ret.lateralParams.torqueV = [[0x0000, 0x00B5, 0x0161, 0x02D6, 0x04C0, 0x0847, 0x1043, 0x1686, 0x40E8], [0x0000, 0x0160, 0x01F0, 0x02E0, 0x0378, 0x04A0, 0x05F0, 0x0804, 0x0F00]]  # TODO: determine if there is a dead zone at the top end
       tire_stiffness_factor = 0.677
-      ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.6], [0.18]]
+      ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.24], [0.08]]
       ret.longitudinalTuning.kpBP = [0., 5., 35.]
       ret.longitudinalTuning.kpV = [1.2, 0.8, 0.5]
       ret.longitudinalTuning.kiBP = [0., 35.]
